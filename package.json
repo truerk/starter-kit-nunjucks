@@ -1,5 +1,5 @@
 {
-    "name": "data-store",
+    "name": "nunjucks-started-kit",
     "version": "0.1.0",
     "author": "Nickolay Eryomin",
     "main": "index.js",
@@ -41,7 +41,7 @@
         "html-webpack-plugin": "^4.3.0",
         "mini-css-extract-plugin": "^0.8.2",
         "node-sass": "^4.12.0",
-        "nunjucks-template-loader": "^0.2.0",
+        "nunjucks-template-loader": "^1.0.2",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-loader": "^3.0.0",
         "postcss-sort-media-queries": "^1.4.23",

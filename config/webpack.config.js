@@ -1,10 +1,9 @@
-const path                   = require('path');
-const CopyWebpackPlugin      = require("copy-webpack-plugin");
-const MiniCssExtractPlugin   = require("mini-css-extract-plugin");
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
-const returnEntries          = require('./utils/returnEntries');
-const generateHtmlPlugin     = require('./utils/generateHtmlPlugin');
-const filtersNunjucks        = require('./utils/filtersNunjucks');
+const path                      = require('path');
+const CopyWebpackPlugin         = require("copy-webpack-plugin");
+const MiniCssExtractPlugin      = require("mini-css-extract-plugin");
+const getCSSModuleLocalIdent    = require('react-dev-utils/getCSSModuleLocalIdent');
+const generateNunjucksHtml      = require('nunjucks-template-loader/utils/generateNunjucksHtml');
+const nunjucksFilters           = require('nunjucks-template-loader/filters');
 
 const PATHS = {
     src: path.resolve(__dirname, '../src'),
@@ -135,8 +134,8 @@ module.exports = {
                     {
                         loader: 'nunjucks-template-loader',
                         options: {
-                            paths: [...returnEntries(path.resolve(__dirname, '../templates/**/'))],
-                            filters: filtersNunjucks,
+                            paths: path.resolve(__dirname, '../templates/**/'),
+                            filters: nunjucksFilters,
                             data: {
                                 index: {
                                     foo: 'indexBar'
@@ -160,5 +159,5 @@ module.exports = {
             chunkFilename: "[id].css"
         }),
     ]
-    .concat(generateHtmlPlugin(PATHS.templatesGlob, PATHS.pages))
+    .concat(generateNunjucksHtml(PATHS.templatesGlob, PATHS.pages))
 };
